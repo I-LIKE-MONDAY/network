@@ -1,0 +1,660 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="favicon.ico">
+<title>JSPStudy</title>
+<!-- smartEditor시작 -->
+<script type="text/javascript" src="../se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="../se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
+<!-- smartEditor끝-->
+
+<!-- Bootstrap시작 -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/holder.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<!-- Bootstrap끝 -->
+
+<!-- SyntaxHighlighter -->
+<script type="text/javascript" src="/main/scripts/shCore.js"></script>
+<script type="text/javascript" src="/main/scripts/shAutoloader.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushAppleScript.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushAS3.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushErlang.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushJScript.js"></script>
+<!-- <script type="text/javascript" src="/main/scripts/shBrushObjC.js"></script> -->
+<script type="text/javascript" src="/main/scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushSass.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/main/scripts/shLegacy.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+<link type="text/css" rel="stylesheet" href="/main/styles/shCoreDefault.css" />
+<!-- SyntaxHighlighter end -->
+
+<!-- 구글검색 -->
+<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
+<script>
+	function winpop(url) {
+		window.open(url, "새창",
+				"width=500, height=500, toolbar=no, scrollbars=yes, resizable=yes");
+	}
+</script>
+<!-- message 스크립트  -->
+<script type="text/javascript">
+	function openMessage(receive_nick, m_num) {
+		var src = "/message/messageList.jsp?receive_nick="
+				+ receive_nick + "&m_num=" + m_num;
+		window
+				.open(src, "쪽지보기",
+						"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	}
+	function goPopUp(){
+		window.open("error_list.jsp","오타내역",
+			"width=600, height=570, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	}
+</script>
+<!--  message 스크립트 끝  -->
+</head>
+<body>
+	<div class="container">
+		<!-- 페이지 상단 시작 -->
+		<div class="row">
+			<div class="col-md-9">
+				<a href="/main/main.jsp" title="사이트 처음으로">
+					<img src="/main/images/jsptitle.jpg" class="img-responsive" alt="Responsive image" style="width: 460px; height: 100px;" />
+				</a>
+			</div>
+
+			<!-- 회원정보 -->
+			
+			
+			<!-- 회원정보끝 -->
+		</div>
+		<!-- 메뉴바  -->
+		<div class="row clearfix">
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand glyphicon" href="main.jsp"> <span class="glyphicon glyphicon-home"></span>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=notice&keyField=a_division1&keyWord=notice">공지사항</a></li>
+						<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=free">자유게시판</a></li>
+						<li class="dropdown"><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna" class="dropdown-toggle" data-toggle="dropdown">Q & A <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<!-- Q & A  카테고리 보여주기 -->
+								
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=JSP&b_category=JSP">
+										JSP
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=JAVA&b_category=JAVA">
+										JAVA
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=이클립스&b_category=이클립스">
+										이클립스
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=플러터 UI 입문&b_category=플러터 UI 입문">
+										플러터 UI 입문
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=라즈베리파이 4 정석&b_category=라즈베리파이 4 정석">
+										라즈베리파이 4 정석
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=플러터 UI 실전&b_category=플러터 UI 실전">
+										플러터 UI 실전
+								</a></li>
+								
+							</ul></li>
+						<li class="dropdown"><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture" class="dropdown-toggle" data-toggle="dropdown">강의실 <b
+								class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<!-- 강의 카테고리 보여주기 -->
+								
+								<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=이클립스"> 이클립스
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=JSP"> JSP
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=JAVA"> JAVA
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=자바스크립트"> 자바스크립트
+								</a></li>
+								
+								<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=자바소스"> 자바소스
+								</a></li>
+								
+							</ul></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								
+									<li>
+									
+								<!--	<a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=JSP 웹프로그래밍">JSP 웹프로그래밍</a>-->
+									
+									<a href="main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=JSP 웹프로그래밍&b_category=JSP 웹프로그래밍">JSP 웹프로그래밍</a>
+								</li>
+								
+									<li>
+									
+								<!--	<a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=Java 프로그래밍 입문">Java 프로그래밍 입문</a>-->
+									
+									<a href="main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=Java 프로그래밍 입문&b_category=Java 프로그래밍 입문">Java 프로그래밍 입문</a>
+								</li>
+								
+									<li>
+									
+								<!--	<a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=라즈베리파이 4 정석">라즈베리파이 4 정석</a>-->
+									
+									<a href="main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=라즈베리파이 4 정석&b_category=라즈베리파이 4 정석">라즈베리파이 4 정석</a>
+								</li>
+								
+									<li>
+									
+								<!--	<a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=플러터 UI 입문">플러터 UI 입문</a>-->
+									
+									<a href="main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=플러터 UI 입문&b_category=플러터 UI 입문">플러터 UI 입문</a>
+								</li>
+								
+									<li>
+									
+								<!--	<a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=플러터 UI 실전">플러터 UI 실전</a>-->
+									
+									<a href="main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=플러터 UI 실전&b_category=플러터 UI 실전">플러터 UI 실전</a>
+								</li>
+								
+								</ul>
+							</li>
+						<!-- Google -->
+						<form class="navbar-form navbar-left visible-lg" role="search" method="get">
+							<div class="form-group">
+								<input type="hidden" name="cof"
+									value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:11" /> <input
+									type="text" name="q" value="" class="form-control" placeholder="Search" id="sbi" />
+							</div>
+							<input type="submit" name="sa" value="Google 검색" class="btn btn-warning" id="sbb" />
+						</form>
+						<!-- Google 끝 -->
+
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle glyphicon glyphicon-user active" data-toggle="dropdown">  <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									
+									<li><a href="/main/main.jsp?PATH=/member/login.jsp">로그인</a></li>
+									<li><a href="/main/main.jsp?PATH=/member/registerForm.jsp">회원가입</a></li>
+									
+								</ul>
+						</li>
+						
+						<p class="navbar-text pull-left">
+							<a href="/main/main.jsp?PATH=/member/login.jsp" class="navbar-link" style="text-align: center;">로그인</a>
+						</p>
+						<p class="navbar-text pull-left">
+							<a href="/main/main.jsp?PATH=/member/registerForm.jsp" class="navbar-link" style="text-align: center;">회원가입</a>
+						</p>
+						
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<!-- 메뉴바end  -->
+		<!-- 배너 -->
+		<!-- <div class="row">
+			<img src="http://www.crayonpop.com/files/attach/images/62/062/ed7d025d9ceb03a5acf48851ef1b36c2.jpg"
+				class="img-thumbnail" width="100%" /> 
+		</div> -->
+		<!-- 배너끝 -->
+
+		<!-- 페이지 상단 끝 -->
+		<div class="row" style="margin-top: -15px;">
+			<!-- 좌측메뉴, 배너 -->
+			<div class="col-md-2 visible-lg">
+				<div class="row well">
+					<fieldset>
+						<legend>
+							<div align="center"><img src="images/apis.png" width="100" height="32">
+							</div>
+						</legend>
+						   <img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('https://docs.oracle.com/en/java/javase/13/docs/api/index.html')">
+							J2SE 13</a><br/><br/>
+						   <img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('https://docs.oracle.com/en/java/javase/12/docs/api/index.html')">
+							J2SE 12</a><br/><br/>
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('http://docs.oracle.com/javaee/7/api/index.html')"> J2EE
+							7.0</a><br/> <br/>
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html')"> Servlet 4.0</a><br/><br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('http://tomcat.apache.org/tomcat-9.0-doc/jspapi/index.html')"> JSP 2.3</a><br/><br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('https://tomcat.apache.org/tomcat-9.0-doc/index.html')"> Tomcat 9.0</a><br/><br/> 
+						    <img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://tomcat.apache.org/tomcat-8.0-doc/elapi/index.html')"> EL 3.0</a><br/><br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://docs.oracle.com/javaee/7/api/javax/websocket/package-summary.html')"> WebSocket 1.0</a><br/> <br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('http://docs.oracle.com/javaee/1.4/tutorial/doc/JSTL.html')">
+							JSTL TUTORIAL</a><br/><br/><img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://commons.apache.org/fileupload/apidocs/index.html')"> File Upload</a><br/><br/>
+					</fieldset>
+				</div>
+				<div class="row">
+					<a href="javascript:winpop('http://www.java.com')"> <img src="images/java-logo.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br /> 
+					
+					<a href="javascript:winpop('http://www.eclipse.org/')"> <img src="images/eclipse.jpg" class="img-thumbnail"
+						style="width: 200px; height: 100px;">
+					</a><br />
+					<a href="javascript:winpop('https://tomcat.apache.org/download-90.cgi')"> <img src="images/apachetomcat.png" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br />
+					<a href="javascript:winpop('http://www.oracle.com/')"> <img src="images/oracle_logo.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br />
+					<!--<a href="javascript:winpop('http://www.jquery.com/')"> <img src="images/jquery_logo.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br />
+					<a href="javascript:winpop('http://www.w3.org/html/wg/drafts/html/master/')"> <img src="images/HTML5.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a>-->
+				</div>
+			</div>
+			<!-- 좌측메뉴, 배너 끝-->
+			<!-- 우측페이지 본문 시작 -->			
+			<div class="col-md-10">
+				
+				
+				
+
+
+
+
+
+
+
+
+
+
+<!-- 광고 -->
+
+
+
+<!--
+<div class="row" style="margin-left: 5px;">
+	<div class="jumbotron col-md-8" style="height:155px; margin-top: 0px; padding-top: 5px">		
+		<h2>Response JSP!</h2>
+ 		 <p><h4>본 사이트는 JSP 입문자들을 위한 커뮤니티공간 입니다.</h4></p>
+ 		 <p><a href="/main/main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=JSP" 
+ 		 	class="btn btn-primary btn-sm" role="button">강의실로 GO!</a></p>	
+		
+	</div>	 
+	<div class="media col-md-4" style="margin-top: 0px;">
+		<a class="pull-left" href="/main/main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=JSP 웹프로그래밍">
+			 <img class="media-object img-thumbnail img-responsive" src="/main/images/jsp_bookimg.jpg" border="1">				 
+		</a><br/>
+		<div class="media-body">
+		    <p>JSPStudy의 JSP 웹프로그래밍 입문+활용</p>
+			<a href="http://www.yes24.com/24/Goods/12049776?Acode=101" target="_blank">YES24</a><br/> 
+			<a target="_blank" href="http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=213916386&bid1=search&bid2=product&bid3=title&bid4=001">인터파크</a><br /> 					
+			<a target="_blank" href="http://www.aladin.co.kr/shop/wproduct.aspx?ISBN=1185553002">알라딘</a><br/>
+			<a target="_blank" href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791185553009">교보문고</a><br/>
+			<a target="_blank" href="http://www.bandinlunis.com/front/product/detailProduct.do?prodId=3704275">반디앤루이스</a><br/>
+		</div>	 	
+	</div>
+	-->
+	<div class="jumbotron col-md-12" style="height:155px; padding-top: 5px;">		
+		<table>
+			<tr>
+				<td>
+					<a href="http://jspstudy.co.kr/main/main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=라즈베리파이 4 정석&b_category=라즈베리파이 4 정석"><img src="/main/images/iot_bookimg.jpg"></a>
+				</td>
+				<td valign="top">
+					<p><h5>&nbsp;&nbsp;IoT 사물인터넷을 위한 라즈베리파이 4<br/><br/>
+					&nbsp;&nbsp;<a href="http://www.yes24.com/Product/Goods/83492347?scode=029" target="_blank">YES24</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791185553573">교보문고</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=321620518&sc.saNo=003002001&bid1=search&bid2=product&bid3=title&bid4=001">인터파크</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=217234720">알라딘</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="https://book.naver.com/bookdb/book_detail.nhn?bid=15811600">NAVER책</a>
+					</h5></p>
+				</td>
+				<td valign="top">
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+				</td>
+				<td>
+					<a href="http://jspstudy.co.kr/main/main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=JSP 웹프로그래밍"><img src="/main/images/jsp_bookimg.jpg"></a>
+				</td>
+				<td valign="top">
+					<p><h5>&nbsp;&nbsp;JSP & Servlet 웹 프로그래밍 입문<br/><br/>
+					&nbsp;&nbsp;<a href="http://www.yes24.com/24/goods/68198708?scode=032&OzSrank=1" target="_blank">YES24</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791185553481&orderClick=LAG&Kc=">교보문고</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=299236827&sc.saNo=003002001&bid1=search&bid2=product&bid3=title&bid4=001">인터파크</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=177598037">알라딘</a><br/>
+					&nbsp;&nbsp;<a target="_blank" href="https://book.naver.com/bookdb/book_detail.nhn?bid=14429559">NAVER책</a>
+					</h5></p>
+				</td>
+			</tr>
+		</table>
+	 </div>
+
+	<!-- 배너? -->
+	<!--
+	<div class="row col-md-12" style="margin-top:-20px;">
+	<div class="row col-md-12" >		
+		<div class="col-md-8 visible-lg">
+			<img src="http://www.crayonpop.com/files/attach/images/62/062/ed7d025d9ceb03a5acf48851ef1b36c2.jpg"
+				class="img-thumbnail" Style="margin-left: -10px; height: 150px;"> 			
+			
+		</div>
+		<div class="col-md-4 visible-lg" style="margin-left: 0px;">
+		<iframe width="300"
+				src="//www.youtube.com/embed/Hl-zzrqQoSE?feature=player_detailpage?"
+				frameborder="0" allowfullscreen></iframe>		
+			
+		</div> 
+	</div>
+	-->
+	<!-- 배너?끝 -->		
+
+	<!-- 게시판 프리뷰 -->
+	<div class="row">		
+		
+		<div class="col-md-6">
+			<div class="panel panel-success">
+				<div class="panel-heading">Q & A &nbsp;&nbsp;&nbsp;&nbsp; 인기글</div>
+				<div class="panel-body">
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('957','844','qna','JSP')"> 실습예제 답안 및 ppt 파일 부탁드립니다!!&nbsp;&nbsp;
+						</a> dmsgh 2015-06-18</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('653','809','qna','JSP')">  JSP 구구단 출력 질문입니다.&nbsp;&nbsp;
+						</a> bbooing 2015-04-23</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('654','7','qna','JSP')"> JSP 구구단 소스입니다.^^&nbsp;&nbsp;
+						</a> JSPStudy 2015-04-24</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('39','7','qna','JSP')"> JSP 전용 Q&A 게시판입니다.&nbsp;&nbsp;
+						</a> JSPStudy 2014-02-18</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('623','809','qna','JSP')"> 77페이지 실습예제 1번 답좀 알려주세요!! &nbsp;&nbsp;
+						</a> bbooing 2015-04-16</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('48','563','qna','JSP')"> jsp ch13장 회원가입 zipCheck.jsp 에관한 질문입니다.&nbsp;&nbsp;
+						</a> 푸른밤 2014-02-13</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('90','581','qna','JSP')"> 홈페이지 제작에 DB연동과 관련해서 질문이 있습니다.&nbsp;&nbsp;
+						</a> 환각상태 2014-04-08</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('121','636','qna','JSP')"> [JSP 웹 프로그래밍 입문+활용] 실행 에러 문의&nbsp;&nbsp;
+						</a> 웃자고요 2014-05-28</li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">강의게시판 &nbsp;&nbsp;&nbsp;&nbsp; 최신글</div>
+				<div class="panel-body">
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('168','7','lecture','JSP')">이미지 스크롤 자동 로딩 예제(JSP,Ajax)</a> JSPStudy 2019-12-18</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('167','7','lecture','JSP')">JSP로 만든 Simple 쇼핑몰</a> JSPStudy 2019-12-05</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('161','7','lecture','')">[Java 교재] 소스 및 프로그램을 링크합니다.</a> JSPStudy 2015-10-19</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('159','7','lecture','JSP')">간단한 파일업로드 및 다운로드</a> JSPStudy 2015-07-17</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('158','7','lecture','자바소스')">MyChat2.0 - Swing버전</a> JSPStudy 2015-03-31</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('157','7','lecture','자바소스')">Echo 채팅 프로그램(배치파일포함)</a> JSPStudy 2015-03-27</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('156','7','lecture','자바소스')">그래픽예제3</a> JSPStudy 2015-03-13</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('155','7','lecture','자바소스')">그래픽예제2</a> JSPStudy 2015-03-12</li>
+					</ul>
+					
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="row">
+		
+		<div class="col-md-6">
+			<div class="panel panel-warning">
+				<div class="panel-heading">Q & A &nbsp;&nbsp;&nbsp;&nbsp; 최신글</div>
+				<div class="panel-body">
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3151','1378','qna','JAVA')"> java 프로그래밍 입문 ppt강의자료 요청드립니다.&nbsp;&nbsp;
+						</a> workman 2022-09-24</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3150','1377','qna','플러터 UI 실전')"> 모두의 컬리 UI만들기에서 splash화면 만들기 궁금한점&nbsp;&nbsp;
+						</a> 나바이어 2022-09-23</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3149','1373','qna','플러터 UI 실전')"> main_screens.dart onTap 질문&nbsp;&nbsp;
+						</a> fluuuter 2022-08-07</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3148','1372','qna','플러터 UI 실전')"> 실전 - 17페이지 관련 소스 업데이트 언제 해 주시나요?&nbsp;&nbsp;
+						</a> jjkwak 2022-08-07</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3147','1371','qna','JSP')"> JSP&Servlet ch03 질문합니다. &nbsp;&nbsp;
+						</a> wlng41 2022-07-13</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3146','1370','qna','JSP')"> 오류메시지 40page &nbsp;&nbsp;
+						</a> 홍아 2022-06-10</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3144','1273','qna','라즈베리파이 4 정석')"> bullseye OS 업데이트 후 카메라 사용&nbsp;&nbsp;
+						</a> 니크 2022-06-07</li>
+					</ul>
+					
+					<ul class="list-unstyled">
+						<li><a href="javascript:bread('3143','1368','qna','플러터 UI 입문')"> 질문드립니다.&nbsp;&nbsp;
+						</a> 플러터 2022-05-15</li>
+					</ul>
+					
+				</div>
+			</div>
+		</div>		
+
+		
+		<div class="col-md-6">
+			<div class="panel  panel-primary">
+				<div class="panel-heading">공지사항 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 최신글</div>
+				<div class="panel-body">
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('166','7','a_division1','notice')">IoT 사물인터넷을 위한 라즈베리파이4 정석 교재 소스, PPT</a> JSPStudy 2020-06-26</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('165','7','a_division1','notice')">[2020년 JSP&서블릿] 소스 및 프로그램, PPT를 링크합니다.</a> JSPStudy 2020-09-09</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('162','7','a_division1','notice')">[Java 교재] 소스 및 프로그램을 링크합니다.</a> JSPStudy 2015-10-19</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('145','7','a_division1','notice')">[JSP 교재] 소스 및 프로그램을 링크합니다.</a> JSPStudy 2015-10-19</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('48','7','a_division1','notice')">[JSP 교재] 오타 내역 및 수정 사항</a> JSPStudy 2016-12-07</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('39','7','a_division1','notice')">강좌 개설 하실분은 연락 주시기 바랍니다.</a> JSPStudy 2014-02-18</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('32','7','a_division1','notice')">교재에 대한 질문은 Book카테고리에 JSP 웹프로그래밍에 문의 바랍니다.</a> JSPStudy 2014-02-14</li>
+					</ul>
+					
+
+					<ul class="list-unstyled">
+						<li><a href="javascript:aread('21','7','a_division1','notice')">게시판 및 관리 규칙에 대해서 알려드립니다. </a> JSPStudy 2014-02-02</li>
+					</ul>
+					
+				</div>
+			</div>
+			<!-- row -->
+		</div>
+	</div>
+</div>
+
+<form name="areadFrm" method="post"
+	action="/main/main.jsp?PATH=/admin/adminRead.jsp">	
+	<input type="hidden" name="a_num"> 
+	<input type="hidden" name="m_num">	
+	<input type="hidden" name="a_division1"> 
+	<input type="hidden" name="nowPage">
+	<input type="hidden" name="keyField" value="a_category"> 
+	<input type="hidden" name="keyWord">
+</form>
+<form name="breadFrm" method="post" action="/main/main.jsp?PATH=/board/boardRead.jsp">	
+	<input type="hidden" name="b_num"> 
+	<input type="hidden" name="m_num"> 
+	<input type="hidden" name="b_division1">
+	<input type="hidden" name="nowPage"> 
+	<input type="hidden" name="keyField" value="category"> 
+	<input type="hidden" name="keyWord"/>	
+</form>
+<script type="text/javascript">
+function aread(num1,num2,div,category) {	
+	document.areadFrm.a_num.value = num1;
+	document.areadFrm.m_num.value = num2;
+	document.areadFrm.a_division1.value = div; 
+	document.breadFrm.keyWord.value = category;	
+	document.areadFrm.submit();
+}
+function bread(num1,num2,div,category) {		
+	document.breadFrm.b_num.value = num1;
+	document.breadFrm.m_num.value = num2;
+	document.breadFrm.b_division1.value = div;	
+	document.breadFrm.keyWord.value = category;	 
+	document.breadFrm.submit();
+}
+</script>
+
+				
+							
+			</div>
+			<!-- 우측페이지 본문 끝 -->
+		</div>
+
+		<!-- 페이지 하단 시작-->
+		<div class="row text-danger" style="padding-top: 50px; padding-bottom: 100px; clear:both;">
+			<p class="text-center col-md-12">
+				Copyright &copy; since 2001 JSPStudy.co.kr All rights reserved.<br />
+				대표자 : 정동진 | 사업자등록번호 : 746-21-00566 | 상호 : 탑스퀘어 1215호<br />
+                주소 : 부산광역시 기장군 정관읍 정관중앙로 45, 12층 1215호<br />
+                전자우편 : smba222@naver.com. | 유선전화번호 : 051-753-5600<br />
+				<hr>
+				<div agree_line>
+				<a href="/main/main.jsp?PATH=/terms/JspStudyAgree.html" target="_blank" style="display: flex; justify-content: center; text-align: center;">이용약관</a> <a href="/main/main.jsp?PATH=/terms/persnalinfomation.html" target="_blank" style="display: flex; justify-content: center; text-align: center;">개인정보처리방침</a>
+				 <!-- PROJECT - Response 2014 -->
+				
+			</p>
+		</div>
+		<!-- 페이지 하단 끝-->
+	</div>
+</body>
+</html>
