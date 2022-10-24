@@ -22,7 +22,7 @@ class LoginAWT3 extends MFrame implements ActionListener {
    PrintWriter out;
    String id;
    String host = "127.0.0.1";
-   int port = 8004;
+   int port = 8006;
    String title = "MyChat 3.0";
    String label[] = {"ID와 PWD를 입력하세요.",
                         "ID와 PWD를 확인하세요.",
