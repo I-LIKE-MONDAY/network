@@ -1,4 +1,4 @@
-package talk04;
+package ch14;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -23,55 +23,61 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.StringTokenizer;
 
-public class TalkClient extends MFrame 
+public class ChatClient4 extends MFrame 
 implements ActionListener, Runnable {
 
-	Button  saveBtn, msgBtn, sendBtn;
+	Button  listBtn, msgBtn, saveBtn,  sendBtn;
 	TextField sendTf;
 	TextArea contentArea;
 	List chatList;
 	Socket sock;
 	BufferedReader in;
 	PrintWriter out;
-	String title = "Talk 1.0";
+	String title = "MyChat 4.0";
 	String listTitle = "*****CHAT LIST*****";
 	boolean flag = false;
 	String id;
-	String label[] = {"SAVE", "MESSAGE", "SEND"};
-	String str[] = {"바보","개새끼","새끼","자바","java"};
-	Label chatTxt; // CHAT 라벨 추가
+	String label[] = {"MLIST", "MESSAGE","SEND","SAVE"};
+	MsgAWT4 msgAWT4;
 
-	public TalkClient(BufferedReader in, PrintWriter out, String id) {
-		super(450, 500);
+	public ChatClient4(BufferedReader in, PrintWriter out, String id) {
+		super(500, 500);
 		this.in = in;
 		this.out = out;
 		this.id = id; 
 		setTitle(title + " - " + id + "님 반갑습니다.");
 		contentArea = new TextArea();
-		contentArea.setBackground(Color.white);
-		contentArea.setForeground(Color.black);
+		contentArea.setBackground(Color.DARK_GRAY);
+		contentArea.setForeground(Color.GREEN);
 		contentArea.setEditable(false);
 		add(BorderLayout.CENTER, contentArea);
-		///////////////////////////////////////////////////////////////////////////////////////////
-		chatList = new List();
-		
+		// /////////////////////////////////////////////////////////////////////////////////////////
 		Panel p2 = new Panel();
-		add(BorderLayout.NORTH, p2);
-		saveBtn = new Button(label[0]);
-		saveBtn.addActionListener(this);
-		p2.add(saveBtn);
-
+		p2.setLayout(new BorderLayout());
+		chatList = new List();
+		chatList.add(listTitle);
+		p2.add(BorderLayout.CENTER, chatList);
+		Panel p3 = new Panel();
+		p3.setLayout(new GridLayout(1, 2));
+		listBtn = new Button(label[0]);
+		listBtn.addActionListener(this);
+		msgBtn = new Button(label[1]);
+		msgBtn.addActionListener(this);
+		p3.add(listBtn);
+		p3.add(msgBtn);
+		p2.add(BorderLayout.SOUTH, p3);
+		add(BorderLayout.EAST, p2);
 		// ///////////////////////////////////////////////////////////////////////////////////////////
 		Panel p4 = new Panel();
-		sendTf = new TextField("", 30);
+		sendTf = new TextField("", 50);
 		sendTf.addActionListener(this);
 		sendBtn = new Button(label[2]);
 		sendBtn.addActionListener(this);
-		chatTxt = new Label("CHAT");
-		// 라벨 추가
-		p4.add(chatTxt);
+		saveBtn = new Button(label[3]);
+		saveBtn.addActionListener(this);
 		p4.add(sendTf);
 		p4.add(sendBtn);
+		p4.add(saveBtn);
 		add(BorderLayout.SOUTH, p4);
 		new Thread(this).start();
 		validate();
@@ -98,7 +104,7 @@ implements ActionListener, Runnable {
 			//1970년1월1일 ~현재까지 1/1000초 단위로 계산
 			long fileName = System.currentTimeMillis();
 			try {
-				FileWriter fw = new FileWriter("talk04/"+fileName+".txt");
+				FileWriter fw = new FileWriter("ch14/"+fileName+".txt");
 				fw.write(content);
 				fw.close();
 				contentArea.setText("");
@@ -106,25 +112,28 @@ implements ActionListener, Runnable {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-//		}else if(obj==msgBtn/*message*/) {
-//			int i = chatList.getSelectedIndex();
-//			if(i==-1||i==0) {
-//				new MDialog(this, "경고", "아이디를 선택하세요.");
-//			}else {
-//				new Message("TO:");
-//			}
+		}else if(obj==listBtn) {
+			sendMessage(ChatProtocol4.MSGLIST+ChatProtocol4.DM1+id);
+		}else if(obj==msgBtn/*message*/) {
+			int i = chatList.getSelectedIndex();
+			if(i==-1||i==0) {
+				new MDialog(this, "경고", "아이디를 선택하세요.");
+			}else {
+				new Message("TO");
+			}
 		}else if(obj==sendBtn ||obj==sendTf) {
 			String str = sendTf.getText();
 			if(filterMgr(str)) {
-				new MDialog(this, "경고", "입력하신 글자는 금지어입니다.");
+				new MDialog(this, "경고", "입력하신 글짜는 금지어입니다.");
 				return;
 			}
 			int i = chatList.getSelectedIndex();
 			if(i==-1||i==0) {//전체채팅
-				sendMessage("CHATALL" + ":" + str);
+				sendMessage(ChatProtocol4.CHATALL+ChatProtocol4.DM1+str);
 			}else { //귓속말 채팅
 				String id = chatList.getSelectedItem();
-				sendMessage("CHAT" + ":" + id + ";" + str); // CHAT:id;str
+				sendMessage(ChatProtocol4.CHAT+ChatProtocol4.DM1
+						+id+ChatProtocol4.DM2+str);
 			}
 			sendTf.setText("");
 			sendTf.requestFocus();
@@ -132,24 +141,26 @@ implements ActionListener, Runnable {
 	}//--actionPerformed
 
 	public void routine(String line) {
-		int idx = line.indexOf(':');
-		String cmd = line.substring(0, idx); // 처음부터 : 까지 (CHAT:)
-		String data = line.substring(idx+1); // id;str
-		if(cmd.equals("CHATLIST")) {
+		int idx = line.indexOf(ChatProtocol4.DM1);
+		String cmd = line.substring(0, idx);
+		String data = line.substring(idx+1);
+		if(cmd.equals(ChatProtocol4.CHATLIST)) {
 			chatList.removeAll();
 			chatList.add(listTitle);
-			StringTokenizer st = new StringTokenizer(data, ";"); // id 추출
+			StringTokenizer st = new StringTokenizer(data, ChatProtocol4.DM2);
 			while(st.hasMoreTokens()) {
-				chatList.add(st.nextToken()); // chatList에 id 추가
+				chatList.add(st.nextToken());
 			}
-		}else if(cmd.equals("CHAT")||
-				cmd.equals("CHATALL")){ // 처음부터 : 까지가 CHAT 이거나 CHATALL 이라면
-			contentArea.append(data+"\n"); // contentArea에 내용 추가
-		}else if(cmd.equals("MESSAGE")){ // 처음부터 : 까지가 MESSAGE 라면
-			idx = data.indexOf(';'); //idx = ; 의 위치
-			cmd = data.substring(0,idx); // cmd = id값
-			data = data.substring(idx); // data = str값
-			new Message("FROM", cmd, data); // FROM, id, str
+		}else if(cmd.equals(ChatProtocol4.CHAT)||
+				cmd.equals(ChatProtocol4.CHATALL)){
+			contentArea.append(data+"\n");
+		}else if(cmd.equals(ChatProtocol4.MESSAGE)){
+			idx = data.indexOf(ChatProtocol4.DM2);
+			cmd = data.substring(0,idx);
+			data = data.substring(idx+1);
+			new Message("FROM", cmd, data);
+		}else if(cmd.equals(ChatProtocol4.MSGLIST)){
+			msgAWT4 = new MsgAWT4(this, data); // this : 내자신. MsgAWT4(ChatClient4 client, String str){}
 		}
 	}//--routine
 	
@@ -159,7 +170,7 @@ implements ActionListener, Runnable {
 
 	public boolean filterMgr(String msg){
 		boolean flag = false;//false이면 금지어 아님
-		
+		String str[] = {"바보","개새끼","새끼","자바","java"};
 		//msg : 하하 호호 히히
 		StringTokenizer st = new StringTokenizer(msg);//생략하면 구분자는 공백
 		String msgs[] = new String[st.countTokens()];
@@ -216,7 +227,7 @@ implements ActionListener, Runnable {
 			add(BorderLayout.CENTER, ta);
 			ta.setText(msg);
 			Panel p2 = new Panel();
-			if (mode.equals("TO:")) {
+			if (mode.equals("TO")) {
 				p2.add(send = new Button("send"));
 				send.addActionListener(this);
 			}
@@ -230,7 +241,8 @@ implements ActionListener, Runnable {
 
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource()==send){
-				sendMessage("MESSAGE" + ":" + id + ";" + ta.getText());
+				sendMessage(ChatProtocol4.MESSAGE+
+						":"+id+";"+ ta.getText());
 			}
 			setVisible(false);
 			dispose();
@@ -240,9 +252,9 @@ implements ActionListener, Runnable {
 	class MDialog extends Dialog implements ActionListener{
 		
 		Button ok;
-		TalkClient ct2;
+		ChatClient4 ct2;
 		
-		public MDialog(TalkClient ct2,String title, String msg) {
+		public MDialog(ChatClient4 ct2,String title, String msg) {
 			super(ct2, title, true);
 			this.ct2 = ct2;
 			 //////////////////////////////////////////////////////////////////////////////////////////
@@ -252,7 +264,7 @@ implements ActionListener, Runnable {
 			    }
 			   });
 			   /////////////////////////////////////////////////////////////////////////////////////////
-			   setLayout(new GridLayout(2,1));// 그리드 (행, 열)
+			   setLayout(new GridLayout(2,1));
 			   Label label = new Label(msg, Label.CENTER);
 			   add(label);
 			   add(ok = new Button("확인"));
